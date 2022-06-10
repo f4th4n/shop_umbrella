@@ -9,6 +9,8 @@ defmodule ShopWeb.Router do
     pipe_through :api
   end
 
+  get "/", ShopWeb.HomeController, :index
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
