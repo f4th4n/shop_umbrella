@@ -3,4 +3,5 @@ structs:
 		products:
 			- name: string
 			- price: float
-			- 
+			- category: string
+			- description: text

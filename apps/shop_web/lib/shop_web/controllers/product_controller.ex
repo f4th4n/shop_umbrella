@@ -20,6 +20,8 @@ defmodule ShopWeb.ProductController do
     end
   end
 
+  def create(conn, _), do: send_resp(conn, 500, "wrong params")
+
   def show(conn, %{"id" => id}) do
     product = Sales.get_product!(id)
     render(conn, "show.json", product: product)
