@@ -1,0 +1,6 @@
+structs:
+	sale:
+		products:
+			- name: string
+			- price: float
+			- 
