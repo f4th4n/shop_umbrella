@@ -1,8 +1,9 @@
-defmodule Analytic.Worker do
+defmodule Analytic.Calculator do
   use GenServer
 
-  def start_link(state) do
-    GenServer.start_link(__MODULE__, state, name: __MODULE__)
+  def start_link(_state) do
+    new_state = 500
+    GenServer.start_link(__MODULE__, new_state, name: __MODULE__)
   end
 
   ## Callbacks
@@ -18,7 +19,7 @@ defmodule Analytic.Worker do
   end
 
   @impl true
-  def handle_call(:reset, _from, state) do
+  def handle_call(:reset, _from, _state) do
     {:reply, 0, 0}
   end
 

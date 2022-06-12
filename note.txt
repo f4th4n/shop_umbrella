@@ -5,3 +5,7 @@ structs:
 			- price: float
 			- category: string
 			- description: text
+
+##############################
+# learn supervisor:
+##############################
