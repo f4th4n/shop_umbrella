@@ -21,7 +21,12 @@ defmodule Shop.SalesTest do
     end
 
     test "create_product/1 with valid data creates a product" do
-      valid_attrs = %{category: "some category", description: "some description", name: "some name", price: 120.5}
+      valid_attrs = %{
+        category: "some category",
+        description: "some description",
+        name: "some name",
+        price: 120.5
+      }
 
       assert {:ok, %Product{} = product} = Sales.create_product(valid_attrs)
       assert product.category == "some category"
@@ -36,7 +41,13 @@ defmodule Shop.SalesTest do
 
     test "update_product/2 with valid data updates the product" do
       product = product_fixture()
-      update_attrs = %{category: "some updated category", description: "some updated description", name: "some updated name", price: 456.7}
+
+      update_attrs = %{
+        category: "some updated category",
+        description: "some updated description",
+        name: "some updated name",
+        price: 456.7
+      }
 
       assert {:ok, %Product{} = product} = Sales.update_product(product, update_attrs)
       assert product.category == "some updated category"
