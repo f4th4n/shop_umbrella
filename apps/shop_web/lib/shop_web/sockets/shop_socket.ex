@@ -7,6 +7,7 @@ defmodule ShopWeb.ShopSocket do
   )
 
   channel "ping", ShopWeb.PingChannel
+  channel "flash_sale", ShopWeb.FlashSaleChannel
 
   @impl true
   def connect(params, socket, _connect_info) do
