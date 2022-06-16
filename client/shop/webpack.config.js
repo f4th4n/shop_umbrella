@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/vendor.js',
   mode: 'development',
   watch: true,
   output: {
-    filename: 'main.js',
+    filename: 'vendor.js',
     path: path.resolve(__dirname, 'dist'),
   },
   watchOptions: {
@@ -17,6 +17,6 @@ module.exports = {
       directory: __dirname,
     },
     compress: true,
-    port: 9000,
+    port: 9000
   },
 };
