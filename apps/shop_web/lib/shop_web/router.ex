@@ -2,6 +2,7 @@ defmodule ShopWeb.Router do
   use ShopWeb, :router
 
   alias ShopWeb.ProductController
+  alias ShopWeb.PurchaseController
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -14,6 +15,7 @@ defmodule ShopWeb.Router do
   get "/", ShopWeb.HomeController, :index
 
   resources "/products", ProductController
+  resources "/purchases", PurchaseController, except: [:new, :edit]
 
   # Enables LiveDashboard only for development
   #

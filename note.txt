@@ -6,6 +6,9 @@ structs:
 			- category: string
 			- description: text
 
+mix phx.gen.json Transaction Purchase purchases product_id:references:products purchase_id:references:purchases
+mix phx.gen.json Transaction PurchaseDetails purchase_details product_id:references:products purchase_id:references:purchases
+
 ##############################
 # learn supervisor:
 ##############################

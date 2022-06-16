@@ -14,6 +14,6 @@ defmodule Shop.Transaction.Purchase do
   def changeset(purchase, attrs) do
     purchase
     |> cast(attrs, [])
-    |> validate_required([])
+    |> validate_required([:product_id, :purchase_id])
   end
 end

@@ -11,7 +11,10 @@ defmodule ShopWeb.PurchaseController do
     render(conn, "index.json", purchases: purchases)
   end
 
-  def create(conn, %{"purchase" => purchase_params}) do
+  def create(conn, %{"purchase" => purchase_params, "product_ids" => product_ids}) do
+    IO.puts("product_idsproduct_idsproduct_idsproduct_ids")
+    IO.inspect(product_ids)
+
     with {:ok, %Purchase{} = purchase} <- Transaction.create_purchase(purchase_params) do
       conn
       |> put_status(:created)

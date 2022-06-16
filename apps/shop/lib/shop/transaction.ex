@@ -101,4 +101,100 @@ defmodule Shop.Transaction do
   def change_purchase(%Purchase{} = purchase, attrs \\ %{}) do
     Purchase.changeset(purchase, attrs)
   end
+
+  alias Shop.Transaction.PurchaseDetails
+
+  @doc """
+  Returns the list of purchase_details.
+
+  ## Examples
+
+      iex> list_purchase_details()
+      [%PurchaseDetails{}, ...]
+
+  """
+  def list_purchase_details do
+    Repo.all(PurchaseDetails)
+  end
+
+  @doc """
+  Gets a single purchase_details.
+
+  Raises `Ecto.NoResultsError` if the Purchase details does not exist.
+
+  ## Examples
+
+      iex> get_purchase_details!(123)
+      %PurchaseDetails{}
+
+      iex> get_purchase_details!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_purchase_details!(id), do: Repo.get!(PurchaseDetails, id)
+
+  @doc """
+  Creates a purchase_details.
+
+  ## Examples
+
+      iex> create_purchase_details(%{field: value})
+      {:ok, %PurchaseDetails{}}
+
+      iex> create_purchase_details(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_purchase_details(attrs \\ %{}) do
+    %PurchaseDetails{}
+    |> PurchaseDetails.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a purchase_details.
+
+  ## Examples
+
+      iex> update_purchase_details(purchase_details, %{field: new_value})
+      {:ok, %PurchaseDetails{}}
+
+      iex> update_purchase_details(purchase_details, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_purchase_details(%PurchaseDetails{} = purchase_details, attrs) do
+    purchase_details
+    |> PurchaseDetails.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a purchase_details.
+
+  ## Examples
+
+      iex> delete_purchase_details(purchase_details)
+      {:ok, %PurchaseDetails{}}
+
+      iex> delete_purchase_details(purchase_details)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_purchase_details(%PurchaseDetails{} = purchase_details) do
+    Repo.delete(purchase_details)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking purchase_details changes.
+
+  ## Examples
+
+      iex> change_purchase_details(purchase_details)
+      %Ecto.Changeset{data: %PurchaseDetails{}}
+
+  """
+  def change_purchase_details(%PurchaseDetails{} = purchase_details, attrs \\ %{}) do
+    PurchaseDetails.changeset(purchase_details, attrs)
+  end
 end
