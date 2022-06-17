@@ -45,7 +45,8 @@ defmodule ShopWeb.MixProject do
       {:gettext, "~> 0.18"},
       {:shop, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:poison, "~> 5.0"}
     ]
   end
 
