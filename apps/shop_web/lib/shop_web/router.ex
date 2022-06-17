@@ -15,7 +15,8 @@ defmodule ShopWeb.Router do
   get "/", ShopWeb.HomeController, :index
 
   resources "/products", ProductController
-  resources "/purchases", PurchaseController, except: [:new, :edit]
+  resources "/purchases", PurchaseController
+  resources "/users", UserController
 
   # Enables LiveDashboard only for development
   #
