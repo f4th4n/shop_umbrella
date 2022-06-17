@@ -1,5 +1,5 @@
-import {config} from './config.js';
+import { config } from './config.js'
 
-$('.submit').click(function() {
+$('.submit').click(function () {
 	console.log('go', $('.email').val(), config.host)
 })
