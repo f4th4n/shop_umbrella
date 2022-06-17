@@ -5,12 +5,8 @@ defmodule ShopWeb.PurchaseDetailsControllerTest do
 
   alias Shop.Transaction.PurchaseDetails
 
-  @create_attrs %{
-
-  }
-  @update_attrs %{
-
-  }
+  @create_attrs %{}
+  @update_attrs %{}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -26,7 +22,9 @@ defmodule ShopWeb.PurchaseDetailsControllerTest do
 
   describe "create purchase_details" do
     test "renders purchase_details when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.purchase_details_path(conn, :create), purchase_details: @create_attrs)
+      conn =
+        post(conn, Routes.purchase_details_path(conn, :create), purchase_details: @create_attrs)
+
       assert %{"id" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.purchase_details_path(conn, :show, id))
@@ -37,7 +35,9 @@ defmodule ShopWeb.PurchaseDetailsControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.purchase_details_path(conn, :create), purchase_details: @invalid_attrs)
+      conn =
+        post(conn, Routes.purchase_details_path(conn, :create), purchase_details: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -45,8 +45,15 @@ defmodule ShopWeb.PurchaseDetailsControllerTest do
   describe "update purchase_details" do
     setup [:create_purchase_details]
 
-    test "renders purchase_details when data is valid", %{conn: conn, purchase_details: %PurchaseDetails{id: id} = purchase_details} do
-      conn = put(conn, Routes.purchase_details_path(conn, :update, purchase_details), purchase_details: @update_attrs)
+    test "renders purchase_details when data is valid", %{
+      conn: conn,
+      purchase_details: %PurchaseDetails{id: id} = purchase_details
+    } do
+      conn =
+        put(conn, Routes.purchase_details_path(conn, :update, purchase_details),
+          purchase_details: @update_attrs
+        )
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.purchase_details_path(conn, :show, id))
@@ -57,7 +64,11 @@ defmodule ShopWeb.PurchaseDetailsControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, purchase_details: purchase_details} do
-      conn = put(conn, Routes.purchase_details_path(conn, :update, purchase_details), purchase_details: @invalid_attrs)
+      conn =
+        put(conn, Routes.purchase_details_path(conn, :update, purchase_details),
+          purchase_details: @invalid_attrs
+        )
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

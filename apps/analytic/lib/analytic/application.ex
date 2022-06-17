@@ -9,7 +9,7 @@ defmodule Analytic.Application do
   def start(_type, _args) do
     children = [
       Analytic.Calculator,
-      Analytic.Temperature,
+      Analytic.Temperature
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

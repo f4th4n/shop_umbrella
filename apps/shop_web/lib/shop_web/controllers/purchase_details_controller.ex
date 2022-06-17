@@ -12,7 +12,8 @@ defmodule ShopWeb.PurchaseDetailsController do
   end
 
   def create(conn, %{"purchase_details" => purchase_details_params}) do
-    with {:ok, %PurchaseDetails{} = purchase_details} <- Transaction.create_purchase_details(purchase_details_params) do
+    with {:ok, %PurchaseDetails{} = purchase_details} <-
+           Transaction.create_purchase_details(purchase_details_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.purchase_details_path(conn, :show, purchase_details))
@@ -28,7 +29,8 @@ defmodule ShopWeb.PurchaseDetailsController do
   def update(conn, %{"id" => id, "purchase_details" => purchase_details_params}) do
     purchase_details = Transaction.get_purchase_details!(id)
 
-    with {:ok, %PurchaseDetails{} = purchase_details} <- Transaction.update_purchase_details(purchase_details, purchase_details_params) do
+    with {:ok, %PurchaseDetails{} = purchase_details} <-
+           Transaction.update_purchase_details(purchase_details, purchase_details_params) do
       render(conn, "show.json", purchase_details: purchase_details)
     end
   end

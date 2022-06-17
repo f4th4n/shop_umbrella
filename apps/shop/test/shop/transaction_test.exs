@@ -75,7 +75,8 @@ defmodule Shop.TransactionTest do
     test "create_purchase_details/1 with valid data creates a purchase_details" do
       valid_attrs = %{}
 
-      assert {:ok, %PurchaseDetails{} = purchase_details} = Transaction.create_purchase_details(valid_attrs)
+      assert {:ok, %PurchaseDetails{} = purchase_details} =
+               Transaction.create_purchase_details(valid_attrs)
     end
 
     test "create_purchase_details/1 with invalid data returns error changeset" do
@@ -86,19 +87,26 @@ defmodule Shop.TransactionTest do
       purchase_details = purchase_details_fixture()
       update_attrs = %{}
 
-      assert {:ok, %PurchaseDetails{} = purchase_details} = Transaction.update_purchase_details(purchase_details, update_attrs)
+      assert {:ok, %PurchaseDetails{} = purchase_details} =
+               Transaction.update_purchase_details(purchase_details, update_attrs)
     end
 
     test "update_purchase_details/2 with invalid data returns error changeset" do
       purchase_details = purchase_details_fixture()
-      assert {:error, %Ecto.Changeset{}} = Transaction.update_purchase_details(purchase_details, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Transaction.update_purchase_details(purchase_details, @invalid_attrs)
+
       assert purchase_details == Transaction.get_purchase_details!(purchase_details.id)
     end
 
     test "delete_purchase_details/1 deletes the purchase_details" do
       purchase_details = purchase_details_fixture()
       assert {:ok, %PurchaseDetails{}} = Transaction.delete_purchase_details(purchase_details)
-      assert_raise Ecto.NoResultsError, fn -> Transaction.get_purchase_details!(purchase_details.id) end
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Transaction.get_purchase_details!(purchase_details.id)
+      end
     end
 
     test "change_purchase_details/1 returns a purchase_details changeset" do

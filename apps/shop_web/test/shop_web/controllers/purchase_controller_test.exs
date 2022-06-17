@@ -5,12 +5,8 @@ defmodule ShopWeb.PurchaseControllerTest do
 
   alias Shop.Transaction.Purchase
 
-  @create_attrs %{
-
-  }
-  @update_attrs %{
-
-  }
+  @create_attrs %{}
+  @update_attrs %{}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -45,7 +41,10 @@ defmodule ShopWeb.PurchaseControllerTest do
   describe "update purchase" do
     setup [:create_purchase]
 
-    test "renders purchase when data is valid", %{conn: conn, purchase: %Purchase{id: id} = purchase} do
+    test "renders purchase when data is valid", %{
+      conn: conn,
+      purchase: %Purchase{id: id} = purchase
+    } do
       conn = put(conn, Routes.purchase_path(conn, :update, purchase), purchase: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

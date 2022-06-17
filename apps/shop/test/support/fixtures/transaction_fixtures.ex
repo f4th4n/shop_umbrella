@@ -10,9 +10,7 @@ defmodule Shop.TransactionFixtures do
   def purchase_fixture(attrs \\ %{}) do
     {:ok, purchase} =
       attrs
-      |> Enum.into(%{
-
-      })
+      |> Enum.into(%{})
       |> Shop.Transaction.create_purchase()
 
     purchase
@@ -24,9 +22,7 @@ defmodule Shop.TransactionFixtures do
   def purchase_details_fixture(attrs \\ %{}) do
     {:ok, purchase_details} =
       attrs
-      |> Enum.into(%{
-
-      })
+      |> Enum.into(%{})
       |> Shop.Transaction.create_purchase_details()
 
     purchase_details

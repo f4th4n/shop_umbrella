@@ -3,7 +3,6 @@ defmodule Shop.Transaction.Purchase do
   import Ecto.Changeset
 
   schema "purchases" do
-
     field :product_id, :id
     field :purchase_id, :id
 
