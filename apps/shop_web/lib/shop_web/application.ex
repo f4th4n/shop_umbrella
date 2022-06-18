@@ -5,6 +5,8 @@ defmodule ShopWeb.Application do
 
   use Application
 
+  @registry :game_registry
+
   @impl true
   def start(_type, _args) do
     children = [
@@ -14,7 +16,9 @@ defmodule ShopWeb.Application do
       ShopWeb.Endpoint,
       # Start a worker by calling: ShopWeb.Worker.start_link(arg)
       # {ShopWeb.Worker, arg}
-      Shop.Game.GenServer
+      # {DynamicSupervisor, name: Shop.Game.Supervisor, strategy: :one_for_one},
+      {Shop.Game.Supervisor, []},
+      {Registry, [keys: :unique, name: @registry]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

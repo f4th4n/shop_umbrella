@@ -27,6 +27,7 @@ const startGame = (gameCode) => {
 		.receive('timeout', () => console.log('timed out pushing'))
 
 	channel.on('game:new_state', (payload) => {
+		console.log('payload', payload)
 		$('.game-state').text(payload.game_state)
 	})
 }
