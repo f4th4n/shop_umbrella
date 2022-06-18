@@ -14,6 +14,7 @@ defmodule ShopWeb.Router do
   resources "/products", ShopWeb.ProductController
   resources "/purchases", ShopWeb.PurchaseController
   resources "/users", ShopWeb.UserController
+  resources "/game/damages", ShopWeb.Game.DamageController
   post "/auth/login", ShopWeb.AuthController, :new
 
   # Enables LiveDashboard only for development

@@ -15,8 +15,8 @@ defmodule Shop.Game.GenServer do
     process_name |> via_tuple() |> GenServer.call(:state)
   end
 
-  def reduce(process_name) do
-    process_name |> via_tuple() |> GenServer.call(:reduce)
+  def hit(process_name, damage, user_id, game_code) do
+    process_name |> via_tuple() |> GenServer.call({:hit, damage, user_id, game_code})
   end
 
   # --------------------------------------------------------------------------- events
@@ -42,8 +42,14 @@ defmodule Shop.Game.GenServer do
   end
 
   @impl true
-  def handle_call(:reduce, _from, state) do
-    state = state - 1
+  def handle_call({:hit, damage, user_id, game_code}, _from, state) do
+    state = state - damage
+
+    # db
+    damage_data = %{ user_id: user_id, damage: damage, game_room: game_code }
+    Task.async(fn -> Shop.Games.create_damage(damage_data) end)
+    |> Task.ignore()
+
     {:reply, state, state}
   end
 

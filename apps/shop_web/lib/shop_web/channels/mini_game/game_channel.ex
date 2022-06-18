@@ -12,7 +12,7 @@ defmodule ShopWeb.MiniGame.GameChannel do
     game_state = get_room(socket.topic) |> Shop.Game.GenServer.state()
 
     res = %{
-      game_title: gettext("reduce calculatorz"),
+      game_title: gettext("damage calculatorz"),
       game_state: game_state
     }
 
@@ -20,11 +20,19 @@ defmodule ShopWeb.MiniGame.GameChannel do
   end
 
   def handle_in("game:hit", payload, socket) do
-    game_state = get_room(socket.topic) |> Shop.Game.GenServer.reduce()
+    # payload available:
+    #   payload["damage"]
+    #   payload["user_id"]
+    #   payload["game_code"]
 
-    res = %{
-      game_state: game_state
-    }
+    room = get_room(socket.topic)
+    damage = payload["damage"]
+    user_id = payload["user_id"]
+    game_code = payload["game_code"]
+
+    game_state = Shop.Game.GenServer.hit(room, damage, user_id, game_code)
+
+    res = %{game_state: game_state}
 
     broadcast!(socket, "game:new_state", res)
     {:noreply, socket}

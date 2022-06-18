@@ -2,4 +2,9 @@ const test = () => {
 	console.log('fffffffff')
 }
 
-export {test}
+const randomIntFromInterval = (min, max) => {
+	// min and max included
+	return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+export { test, randomIntFromInterval }

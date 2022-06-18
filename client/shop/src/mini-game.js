@@ -1,7 +1,10 @@
 import { config } from './config.js'
+import { randomIntFromInterval } from './helper.js'
 
 var gameCode = ''
 var channel = null
+
+$('.user-id').text(randomIntFromInterval(1, 10))
 
 const startGame = (gameCode) => {
 	const params = { game_code: gameCode }
@@ -44,5 +47,8 @@ $('.start-game').click(function () {
 })
 
 $('.hit').click(function () {
-	channel.push('game:hit', { damage: 2 })
+	const damage = parseInt($('.input-damage').val())
+	const userId = parseInt($('.user-id').text())
+
+	channel.push('game:hit', { damage, user_id: userId, game_code: gameCode })
 })

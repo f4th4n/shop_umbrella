@@ -11,7 +11,7 @@ defmodule ShopWeb.Application do
       # Start the Telemetry supervisor
       ShopWeb.Telemetry,
       # Start the Endpoint (http/https)
-      ShopWeb.Endpoint,
+      ShopWeb.Endpoint
       # Start a worker by calling: ShopWeb.Worker.start_link(arg)
       # {ShopWeb.Worker, arg}
       # {DynamicSupervisor, name: Shop.Game.Supervisor, strategy: :one_for_one},
