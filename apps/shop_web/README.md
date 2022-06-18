@@ -1,19 +1,18 @@
 # ShopWeb
 
-To start your Phoenix server:
+### Mini game
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Shop.Game.Supervisor.start_child("game1")
+Shop.Game.GenServer.reduce("game1")
+Shop.Game.GenServer.reduce("game1")
+Shop.Game.GenServer.state("game1")
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
+Shop.Game.Supervisor.start_child("game1")
+Shop.Game.GenServer.reduce("game1")
+Shop.Game.GenServer.reduce("game1")
+Shop.Game.GenServer.state("game1")
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```
