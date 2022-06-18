@@ -1,12 +1,14 @@
 import { config } from './config.js'
 
 var gameCode = ''
+var channel = null
 
-const startGame = () => {
-	let socket = new Socket(`${config.wsHost}/mini-game`, { params: {} })
+const startGame = (gameCode) => {
+	const params = { game_code: gameCode }
+	const socket = new Socket(`${config.wsHost}/mini-game`, { params })
 	socket.connect()
 
-	let channel = socket.channel('game', {})
+	channel = socket.channel(`game:${gameCode}`, {})
 	channel
 		.join()
 		.receive('ok', (resp) => {
@@ -17,10 +19,16 @@ const startGame = () => {
 		})
 
 	channel
-		.push('send_start_game')
-		.receive('ok', (payload) => console.log('phoenix replied:', payload))
+		.push('game:start')
+		.receive('ok', (payload) => {
+			$('.game-state').text(payload.game_state)
+		})
 		.receive('error', (err) => console.log('phoenix errored', err))
 		.receive('timeout', () => console.log('timed out pushing'))
+
+	channel.on('game:new_state', (payload) => {
+		$('.game-state').text(payload.game_state)
+	})
 }
 
 $('.start-game').click(function () {
@@ -31,8 +39,9 @@ $('.start-game').click(function () {
 	$('.create-room').addClass('hide')
 
 	gameCode = inputRoom
-	startGame()
+	startGame(gameCode)
 })
 
-// f:test
-startGame()
+$('.hit').click(function () {
+	channel.push('game:hit', { damage: 2 })
+})

@@ -6,7 +6,7 @@ defmodule ShopWeb.MiniGameSocket do
     transport_log: :debug
   )
 
-  channel "game", ShopWeb.MiniGame.GameChannel
+  channel "game:*", ShopWeb.MiniGame.GameChannel
 
   @impl true
   def connect(params, socket, _connect_info) do
