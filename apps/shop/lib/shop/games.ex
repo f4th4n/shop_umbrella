@@ -50,7 +50,6 @@ defmodule Shop.Games do
 
   """
   def create_damage(attrs \\ %{}) do
-    :timer.sleep(5000);
     %Damage{}
     |> Damage.changeset(attrs)
     |> Repo.insert()
@@ -101,5 +100,10 @@ defmodule Shop.Games do
   """
   def change_damage(%Damage{} = damage, attrs \\ %{}) do
     Damage.changeset(damage, attrs)
+  end
+
+  def sum_damage() do
+    query = from p in Shop.Games.Damage, select: sum(p.damage)
+    Shop.Repo.one(query)
   end
 end

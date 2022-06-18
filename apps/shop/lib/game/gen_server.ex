@@ -46,7 +46,9 @@ defmodule Shop.Game.GenServer do
     state = state - damage
 
     # db
-    damage_data = %{ user_id: user_id, damage: damage, game_room: game_code }
+    # use Task.async so it doesn't block gen_server
+    damage_data = %{user_id: user_id, damage: damage, game_room: game_code}
+
     Task.async(fn -> Shop.Games.create_damage(damage_data) end)
     |> Task.ignore()
 
