@@ -5,3 +5,18 @@ body {
 .hide {
 	display: none;
 }
+
+.site-title {
+	color: #333;
+	background: #ddd;
+	margin: 0;
+	padding: 0;
+}
+
+.site-subtitle {
+	color: #666;
+	background: #ddd;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 50px;
+}

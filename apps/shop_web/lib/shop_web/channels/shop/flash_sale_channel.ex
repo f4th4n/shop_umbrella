@@ -1,4 +1,4 @@
-defmodule ShopWeb.FlashSaleChannel do
+defmodule ShopWeb.Shop.FlashSaleChannel do
   use Phoenix.Channel
   import ShopWeb.Gettext
 

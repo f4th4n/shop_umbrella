@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: './src/vendor.js',
@@ -9,14 +9,14 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   watchOptions: {
-    poll: true,
-    ignored: /node_modules/
+    poll: 1000,
+    ignored: /node_modules/,
   },
   devServer: {
     static: {
       directory: __dirname,
     },
     compress: true,
-    port: 9000
+    port: 9000,
   },
-};
+}

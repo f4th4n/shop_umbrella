@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Shop</title>
+		<link rel="stylesheet" type="text/css" href="app.css" />
+	</head>
+	<body>
+		<h1 class="site-title">Elixir Shop</h1>
+		<h3 class="site-subtitle">Mini Game</h3>
+
+		<div class="create-room">
+			<div>Room name: <input class="input-room" type="text" value="room1" /></div>
+			<button class="start-game">Start</button>
+		</div>
+
+		<div class="game-wrapper hide">
+			<div>Game here</div>
+		</div>
+
+		<script src="dist/vendor.js"></script>
+		<script type="module" src="src/mini-game.js"></script>
+	</body>
+</html>

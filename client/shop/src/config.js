@@ -1,5 +1,6 @@
 const config = {
-	host: 'http://localhost:4000',
+	httpHost: 'http://localhost:4000',
+	wsHost: 'ws://localhost:4000',
 }
 
 export { config }

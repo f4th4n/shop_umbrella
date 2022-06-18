@@ -1,4 +1,4 @@
-defmodule ShopWeb.ShopSocket do
+defmodule ShopWeb.MiniGameSocket do
   use Phoenix.Socket
 
   transport(:websocket, Phoenix.Transports.WebSocket,
@@ -6,8 +6,7 @@ defmodule ShopWeb.ShopSocket do
     transport_log: :debug
   )
 
-  channel "ping", ShopWeb.Shop.PingChannel
-  channel "flash_sale", ShopWeb.Shop.FlashSaleChannel
+  channel "game", ShopWeb.MiniGame.GameChannel
 
   @impl true
   def connect(params, socket, _connect_info) do
