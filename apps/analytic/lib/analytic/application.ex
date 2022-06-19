@@ -8,8 +8,16 @@ defmodule Analytic.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      Analytic.Calculator,
-      Analytic.Temperature
+      {Analytic.DamageProducer, 0},
+      {Analytic.DamageProducerConsumer, []},
+      %{
+        id: 1,
+        start: {Analytic.DamageConsumer, :start_link, [[]]}
+      },
+      %{
+        id: 2,
+        start: {Analytic.DamageConsumer, :start_link, [[]]}
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

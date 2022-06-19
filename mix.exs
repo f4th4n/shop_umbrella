@@ -25,7 +25,7 @@ defmodule Shop.Umbrella.MixProject do
   # and cannot be accessed from applications inside the apps/ folder.
   defp deps do
     [
-      {:fakerl, github: "rpip/fakerl"}
+      {:gen_stage, "~> 1.0.0"}
     ]
   end
 
