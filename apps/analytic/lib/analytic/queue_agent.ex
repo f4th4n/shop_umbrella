@@ -4,11 +4,11 @@ defmodule Queue do
   end
 
   def enqueue(item) do
-    Agent.update(__MODULE__, fn(state) -> state ++ [item] end)
+    Agent.update(__MODULE__, fn state -> state ++ [item] end)
   end
 
   def dequeue() do
-    Agent.get_and_update(__MODULE__, fn([item | state]) -> {item, state} end)
+    Agent.get_and_update(__MODULE__, fn [item | state] -> {item, state} end)
   end
 
   def queue() do

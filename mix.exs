@@ -25,7 +25,8 @@ defmodule Shop.Umbrella.MixProject do
   # and cannot be accessed from applications inside the apps/ folder.
   defp deps do
     [
-      {:gen_stage, "~> 1.0.0"}
+      {:gen_stage, "~> 1.0.0"},
+      {:gen_retry, "~> 1.4.0"}
     ]
   end
 

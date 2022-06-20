@@ -19,7 +19,7 @@ defmodule Analytic.MixProject do
   def application do
     [
       mod: {Analytic.Application, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger, :gen_retry]
     ]
   end
 

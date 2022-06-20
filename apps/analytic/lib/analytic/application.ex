@@ -18,7 +18,7 @@ defmodule Analytic.Application do
       #        id: 2,
       #        start: {Analytic.DamageConsumer, :start_link, [[]]}
       #      }
-      #Todo.Metrics
+      # Todo.Metrics
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
