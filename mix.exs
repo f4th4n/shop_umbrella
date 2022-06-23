@@ -26,7 +26,8 @@ defmodule Shop.Umbrella.MixProject do
   defp deps do
     [
       {:gen_stage, "~> 1.0.0"},
-      {:gen_retry, "~> 1.4.0"}
+      {:gen_retry, "~> 1.4.0"},
+      {:libcluster, "~> 3.3.1"}
     ]
   end
 
