@@ -7,6 +7,13 @@ defmodule Analytic.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = [
+      example: [
+        strategy: Cluster.Strategy.Epmd,
+        config: [hosts: [:"node2@10.40.96.4"]]
+      ]
+    ]
+
     children = [
       #      {Analytic.DamageProducer, 0},
       #      {Analytic.DamageProducerConsumer, []},
@@ -19,6 +26,7 @@ defmodule Analytic.Application do
       #        start: {Analytic.DamageConsumer, :start_link, [[]]}
       #      }
       # Todo.Metrics
+      # {Cluster.Supervisor, [topologies, [name: Analytic.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

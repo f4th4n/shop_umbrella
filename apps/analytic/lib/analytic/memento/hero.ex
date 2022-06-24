@@ -34,9 +34,8 @@ defmodule Memento.Hero do
   #
   #    Memento.transaction! fn -> Memento.Query.select(Memento.Hero, {:==, :name, "Lina"}) end
 
-
   def migration() do
-    #:mnesia.delete_table(Memento.Hero)
+    # :mnesia.delete_table(Memento.Hero)
 
     Mnesia.transform_table(
       Memento.Hero,
